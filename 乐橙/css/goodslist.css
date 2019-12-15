@@ -1,0 +1,88 @@
+body {
+  background-color: #f2f5f8; }
+
+.margin {
+  width: 1200px;
+  margin: 0 auto; }
+
+.m-category {
+  position: relative;
+  z-index: 1; }
+  .m-category .main-wrap .breadcrumb {
+    padding: 20px 0;
+    font-size: 12px; }
+  .m-category .main-wrap .catelist {
+    margin: 10px auto 50px; }
+    .m-category .main-wrap .catelist .goodslist {
+      font-size: 0;
+      min-height: 410px; }
+      .m-category .main-wrap .catelist .goodslist li {
+        background: #fff;
+        display: inline-block;
+        vertical-align: top;
+        box-sizing: border-box;
+        width: 291px;
+        margin: 0 12px 12px 0; }
+        .m-category .main-wrap .catelist .goodslist li .goodsitem {
+          font-size: 14px;
+          color: #999;
+          line-height: 1;
+          background: #fff;
+          padding: 0 0 20px 0;
+          cursor: pointer; }
+          .m-category .main-wrap .catelist .goodslist li .goodsitem .img-wrap {
+            margin: 0 auto 8px;
+            width: 291px;
+            height: 291px;
+            text-align: center; }
+            .m-category .main-wrap .catelist .goodslist li .goodsitem .img-wrap img {
+              vertical-align: top;
+              width: 291px;
+              height: 291px; }
+          .m-category .main-wrap .catelist .goodslist li .goodsitem p {
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            padding: 0 12px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            cursor: pointer; }
+          .m-category .main-wrap .catelist .goodslist li .goodsitem .tags {
+            font-size: 0;
+            height: 20px;
+            overflow: hidden;
+            margin-bottom: 8px; }
+            .m-category .main-wrap .catelist .goodslist li .goodsitem .tags span {
+              display: block;
+              padding: 0 5px;
+              margin-right: 10px;
+              line-height: 20px;
+              font-size: 12px;
+              color: #fff;
+              background: #f4a0a3;
+              float: left; }
+          .m-category .main-wrap .catelist .goodslist li .goodsitem .name {
+            font-size: 16px;
+            color: #333;
+            height: 16px;
+            margin-bottom: 8px; }
+          .m-category .main-wrap .catelist .goodslist li .goodsitem .desc {
+            font-size: 14px;
+            height: 14px;
+            margin-bottom: 12px;
+            color: #999;
+            line-height: 1; }
+          .m-category .main-wrap .catelist .goodslist li .goodsitem .price {
+            font-size: 18px;
+            color: #ea4148;
+            margin-bottom: 0; }
+            .m-category .main-wrap .catelist .goodslist li .goodsitem .price .marketprice {
+              color: #999;
+              font-size: 12px;
+              text-decoration: line-through; }
+      .m-category .main-wrap .catelist .goodslist li:hover {
+        box-shadow: 0 10px 20px 0 rgba(51, 51, 51, 0.09);
+        transition: all .2s; }
+      .m-category .main-wrap .catelist .goodslist li:nth-child(4n) {
+        margin-right: 0; }

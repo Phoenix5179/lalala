@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="images/icon/favicon.ico">
+    <title>购物车</title>
+    <style>
+        img{width:100px}
+        
+    </style>
+</head>
+<body>
+    <div class="headpage"></div>
+    <h2>这是购物车，<a href="goodslist.html">继续购物</a></h2>
+    <table border="1" cellspacing="0" width="1000" align="center">
+        <thead>
+            <tr>
+                <td class = "TXT">全选<input type="checkbox" class="TXT1"></td>   
+                <td>图片</td>
+                <td>名字</td>
+                <td>价格</td>
+                <td>数量</td>
+                <td>删除</td>
+                <td>小计</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="7">购物车为空。。。<a href="goodslist.html">去购物</a></td>
+            </tr>
+            <tr>
+                
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+<script src="libs/ajax.js"></script>
+<script src="libs/cookie.js"></script>
+<script>
+    
+    class Car{
+        constructor(){
+            this.url = "http://localhost:81/data/smart-lock.json";
+            this.tbody = document.querySelector("tbody");
+            this.thead = document.querySelector("thead")
+            this.load();
+            this.addEvent();
+        }  
+        addEvent(){
+            var that = this;
+            this.tbody.addEventListener("click",function(eve){
+                var e = eve || window.event;
+                var target = e.target || e.srcElement;
+                if(target.className == "delete"){
+                    that.id = target.parentNode.getAttribute("index"); 
+                    target.parentNode.remove();
+                    that.changeCookie(function(i){
+                        that.goods.splice(i,1);
+                    });
+                }
+            })
+            this.tbody.addEventListener("input",function(eve){
+                var e = eve || window.event;
+                var target = e.target || e.srcElement;
+                if(target.className == "ipt"){
+                    that.id = target.parentNode.parentNode.getAttribute("index");  
+                    that.changeCookie(function(i){
+                        that.goods[i].num = target.value;
+                        that.calcute();  
+                        that.total();
+                    });
+                }
+            })
+            this.thead.addEventListener("click",function(eve){
+                var e = eve || window.event;
+                var target = e.target || e.srcElement;
+                var atxt = document.querySelectorAll(".txt");
+                if(target.className == "TXT1" && target.checked == true){    
+                    for(var i=0;i<atxt.length;i++){
+                        atxt[i].checked = true;
+                    }       
+                    that.total();   
+                }else if(target.className == "TXT1" && target.checked == false){
+                    for(var i=0;i<atxt.length;i++){
+                        atxt[i].checked = false;
+                    }   
+                    that.total();
+                }
+            })
+            this.tbody.addEventListener("click",function(eve){   
+                var e = eve || window.event;
+                var target = e.target || e.srcElement;
+                var totaln = document.querySelector(".totaln")
+                var atxt = document.querySelectorAll(".txt");
+                if(target.className == "txt"){
+                    that.total();
+                }
+            })
+            
+        } 
+        changeCookie(cb){
+            for(var i=0;i<this.goods.length;i++){
+                if(this.id == this.goods[i].id){
+                    cb(i);
+                    break;
+                }
+            }
+            setCookie("goodsDECookie",JSON.stringify(this.goods))
+        } 
+        load(){
+            ajaxGet(this.url,(res)=>{
+                this.res = JSON.parse(res);
+                this.getCookie();
+            })
+        }
+        getCookie(){
+            this.goods = getCookie("goodsDECookie")? JSON.parse(getCookie("goodsDECookie")) : []; 
+            this.display();
+        }
+        display(){
+            var str = "";
+            for(var i=0;i<this.res.length;i++){
+                for(var j=0;j<this.goods.length;j++){
+                    if(this.goods[j].id === this.res[i].goodsId){
+                        str +=` <tr index="${this.res[i].goodsId}">
+                                    <td><input type="checkbox" class="txt"></td>
+                                    <td><img src="${this.res[i].img}" alt=""></td>
+                                    <td>${this.res[i].name}</td>
+                                    <td>${this.res[i].price}</td>
+                                    <td><input type="Number" min=1 value="${this.goods[j].num}" class="ipt"></td>
+                                    <td class="delete">删除</td>
+                                    <td><input type="text" class="subtotal" disabled></td>
+                                </tr>`
+                                // console.log(1)
+                    }
+                }
+                // console.log(document.getElementsByClassName("delete"))
+            }
+            str = str + `<tr class="totaln">
+                            <td colspan="6" style="text-align:center">总计：</td>                           
+                            <td>0</td>
+                        </tr>`
+            this.tbody.innerHTML = str;
+            this.calcute();          
+        }
+        calcute(){
+            //this.goods是cookie数组，this.res是json数组，而subtotal是添加的顺序
+            // console.log(this.goods)
+            // console.log(this.res)
+            this.subtotal = document.querySelectorAll(".subtotal");
+            // console.log(this.subtotal)
+            // for(var i=0;i<this.res.length;i++){
+            //     for(var j=0;j<this.goods.length;j++){
+            //         if(this.goods[j].id === this.res[i].goodsId){
+            //             this.subtotal[j].value = this.goods[j].num * this.res[i].price;
+            //         }
+            //     }
+            // }
+            for(var i=0;i<this.subtotal.length;i++){
+                this.subtotal[i].value = this.subtotal[i].parentNode.parentNode.children[3].innerHTML * this.subtotal[i].parentNode.parentNode.children[4].children[0].value
+                // console.log(this.subtotal[i].parentNode.parentNode.children[3].innerHTML)
+                // console.log(this.subtotal[i].parentNode.parentNode.children[4].children[0].value)
+            }
+        }
+        total(){
+            //当有单选框被选中时，计算所有被选中的单选框的小计之和
+            this.atxt = document.querySelectorAll(".txt");
+            this.totaln = document.querySelector(".totaln")
+            var abc = 0;
+            for(var i=0;i<this.atxt.length;i++){
+                if(this.atxt[i].checked == true){
+                    abc += parseInt(this.atxt[i].parentNode.parentNode.children[6].children[0].value)  
+                }
+            }
+            this.totaln.children[1].innerHTML = abc
+        }
+    }
+    new Car;
+		
+</script>
+
+</html>

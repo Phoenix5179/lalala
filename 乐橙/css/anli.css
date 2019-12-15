@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/*可以被编译的注释*/
+.list {
+  width: 100px;
+  height: 300px; }
+  .list li {
+    border: solid 1px black; }
+    .list li:hover {
+      background: red; }
+    .list li:after {
+      content: "."; }
+  .list li:hover {
+    background: red; }
+  .list .last {
+    border: none; }

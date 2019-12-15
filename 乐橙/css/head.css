@@ -1,0 +1,183 @@
+* {
+  box-sizing: border-box; }
+
+.margin {
+  width: 1200px;
+  margin: 0 auto; }
+
+#header {
+  height: 36px;
+  font: 12px/36px "";
+  color: #ccc;
+  background: #333; }
+  #header a {
+    margin: 0 3px; }
+  #header i {
+    margin-bottom: 2px;
+    vertical-align: middle; }
+  #header .info {
+    color: #666; }
+  #header .fl {
+    float: left; }
+  #header .fr {
+    float: right; }
+    #header .fr .el-dropdown {
+      display: inline-block; }
+    #header .fr .icon-mobile-phone {
+      display: inline-block;
+      background-image: url(https://cn.imoulife.com/web/_nuxt/img/de388f7.png);
+      background-position: -137px -28px;
+      width: 10px;
+      height: 12px; }
+    #header .fr .icon-lang {
+      display: inline-block;
+      background-image: url(https://cn.imoulife.com/web/_nuxt/img/de388f7.png);
+      background-position: -137px -18px;
+      width: 10px;
+      height: 10px; }
+
+#search {
+  background: #fff;
+  height: 114px; }
+  #search .fl {
+    float: left;
+    margin-top: 30px; }
+  #search .fr {
+    float: right;
+    height: 73px;
+    width: 120px; }
+    #search .fr .shopcart {
+      display: block;
+      width: 120px;
+      margin-top: 37px;
+      font-size: 14px;
+      border-radius: 2px;
+      height: 36px;
+      padding: 5px 0;
+      position: relative;
+      line-height: 1;
+      background: #fff;
+      color: #606266;
+      border: 1px solid #dcdfe6;
+      transition-property: all;
+      transition-duration: 0.1s;
+      transition-timing-function: ease;
+      transition-delay: 0s; }
+      #search .fr .shopcart span {
+        width: 120px; }
+        #search .fr .shopcart span .icon-shopping-cart {
+          display: inline-block;
+          vertical-align: middle;
+          background-image: url(https://cn.imoulife.com/web/_nuxt/img/de388f7.png);
+          background-position: -113px -72px;
+          width: 19px;
+          height: 19px;
+          margin: 0 5px 3px; }
+    #search .fr .shopcart:hover {
+      color: #ea4148;
+      border-color: #f9c6c8;
+      background-color: #fdeced; }
+      #search .fr .shopcart:hover .icon-shopping-cart {
+        background-image: url(https://cn.imoulife.com/web/_nuxt/img/de388f7.png);
+        background-position: -84px -48px; }
+  #search .search-wrap {
+    width: 680px;
+    padding-top: 37px;
+    margin: 0 0 0 360px;
+    position: relative; }
+    #search .search-wrap .el-input {
+      height: 36px;
+      line-height: normal;
+      display: inline-table;
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0; }
+      #search .search-wrap .el-input .el-input__inner {
+        float: left;
+        width: 600px;
+        height: 36px;
+        border-radius: 2px 0 0 2px;
+        line-height: 36px;
+        vertical-align: middle;
+        display: table-cell;
+        border: 1px solid #ea4148;
+        padding: 0 15px;
+        column-rule-color: #606266;
+        display: table-cell; }
+      #search .search-wrap .el-input .searchbtn {
+        float: right;
+        width: 80px;
+        height: 36px;
+        color: #fff;
+        background: #ea4148;
+        padding: 0 20px;
+        border: none; }
+
+#m-nav {
+  background: #fff;
+  width: 100%;
+  height: 38px;
+  position: relative;
+  z-index: 2; }
+  #m-nav .nav {
+    font-size: 14px;
+    font-weight: 700;
+    display: flex; }
+    #m-nav .nav li {
+      margin: 0 60px 22px 0; }
+      #m-nav .nav li a {
+        padding-bottom: 15px;
+        color: #333; }
+      #m-nav .nav li .active {
+        border-bottom: 2px solid #ea4148; }
+        #m-nav .nav li .active a {
+          color: #ea4148; }
+    #m-nav .nav li:hover a {
+      color: #ea4148;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #ea4148; }
+  #m-nav .nav-pop {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 37px;
+    z-index: 2;
+    width: 100%;
+    background: #fff;
+    height: 280px;
+    box-shadow: 0 2px 7px -1px rgba(204, 204, 204, 0.5);
+    overflow: hidden; }
+    #m-nav .nav-pop .pop-container {
+      width: 1200px;
+      margin: 0 auto;
+      padding-top: 10px; }
+    #m-nav .nav-pop li {
+      display: inline-block;
+      padding: 5px;
+      width: 200px;
+      text-align: center;
+      line-height: 1;
+      cursor: pointer;
+      transition: all .2s;
+      transition-property: all;
+      transition-duration: 0.2s;
+      transition-timing-function: ease;
+      transition-delay: 0s; }
+      #m-nav .nav-pop li img {
+        width: 190px;
+        height: 190px;
+        vertical-align: middle; }
+      #m-nav .nav-pop li p {
+        color: #ea4148;
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin: 10px 0 9px;
+        text-align: center;
+        line-height: 1;
+        cursor: pointer; }
+      #m-nav .nav-pop li span {
+        font-family: Helvetica,Arial,sans-serif;
+        font-size: 18px;
+        color: #ea4148; }
